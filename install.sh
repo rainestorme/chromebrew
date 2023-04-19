@@ -310,6 +310,7 @@ if ! cat ~/.bashrc | grep CREW_PREFIX; then
   echo 'export CREW_PREFIX=/mnt/stateful_partition/murkmod/chromebrew' >> ~/.bashrc
   echo 'export PATH="/mnt/stateful_partition/murkmod/chromebrew/bin:/mnt/stateful_partition/murkmod/chromebrew/sbin:$PATH"' >> ~/.bashrc
   echo 'export LD_LIBRARY_PATH=/mnt/stateful_partition/murkmod/chromebrew/lib' >> ~/.bashrc
+  echo 'alias crew="/usr/local/bin/ruby /mnt/stateful_partition/murkmod/chromebrew/lib/crew/bin/crew"' >> ~/.bashrc
   source ~/.bashrc
 fi
 
