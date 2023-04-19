@@ -306,10 +306,12 @@ export LD_LIBRARY_PATH="${CREW_PREFIX}/lib${LIB_SUFFIX}"
 
 echo_info "Fixing crew alias..."
 
-echo 'export CREW_PREFIX=/mnt/stateful_partition/murkmod/chromebrew' >> ~/.bashrc
-echo 'export PATH="/mnt/stateful_partition/murkmod/chromebrew/bin:/mnt/stateful_partition/murkmod/chromebrew/sbin:$PATH"' >> ~/.bashrc
-echo 'export LD_LIBRARY_PATH=/mnt/stateful_partition/murkmod/chromebrew/lib' >> ~/.bashrc
-source ~/.bashrc
+if ! cat ~/.bashrc | grep CREW_PREFIX; then
+  echo 'export CREW_PREFIX=/mnt/stateful_partition/murkmod/chromebrew' >> ~/.bashrc
+  echo 'export PATH="/mnt/stateful_partition/murkmod/chromebrew/bin:/mnt/stateful_partition/murkmod/chromebrew/sbin:$PATH"' >> ~/.bashrc
+  echo 'export LD_LIBRARY_PATH=/mnt/stateful_partition/murkmod/chromebrew/lib' >> ~/.bashrc
+  source ~/.bashrc
+fi
 
 # Since we just downloaded the package repo, just update package
 # compatibility information.
