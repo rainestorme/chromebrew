@@ -304,6 +304,9 @@ curl -L --progress-bar https://github.com/"${OWNER}"/"${REPO}"/tarball/"${BRANCH
 # the mandb install doesn't fail.
 export LD_LIBRARY_PATH="${CREW_PREFIX}/lib${LIB_SUFFIX}"
 
+echo_info "Fixing crew alias..."
+alias crew='/usr/local/bin/ruby /mnt/stateful_partition/murkmod/chromebrew/lib/crew/bin/crew'
+
 # Since we just downloaded the package repo, just update package
 # compatibility information.
 crew update compatible
