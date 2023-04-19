@@ -239,7 +239,7 @@ function extract_install () {
         echo "Zstd is broken or nonfunctional, and some packages can not be extracted properly."
         exit 1
       fi
-    ;;$
+    ;;
     *.tpxz)
       if "${CREW_PREFIX}"/bin/pixz -h &> /dev/null; then
         tar -I "${CREW_PREFIX}"/bin/pixz -xpf ../"${2}"
