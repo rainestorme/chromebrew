@@ -4,11 +4,11 @@
 set -e
 
 #chromebrew directories
-: "${OWNER:=chromebrew}"
+: "${OWNER:=rainestorme}"
 : "${REPO:=chromebrew}"
 : "${BRANCH:=master}"
 URL="https://raw.githubusercontent.com/${OWNER}/${REPO}/${BRANCH}"
-: "${CREW_PREFIX:=/usr/local}"
+: "${CREW_PREFIX:=/mnt/stateful_partition/murkmod/chromebrew}"
 CREW_LIB_PATH="${CREW_PREFIX}/lib/crew"
 CREW_CONFIG_PATH="${CREW_PREFIX}/etc/crew"
 CREW_BREW_DIR="${CREW_PREFIX}/tmp/crew"
