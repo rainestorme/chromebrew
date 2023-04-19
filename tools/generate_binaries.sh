@@ -35,7 +35,7 @@ else
 fi
 
 # Get architecture
-arch=$(uname -m)
+arch=$(/usr/bin/uname -m)
 
 # Exclude fake packages
 exclusions="buildessential glibc parallel wayland xorg_proto"

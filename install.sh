@@ -18,9 +18,9 @@ CREW_PACKAGES_PATH="${CREW_LIB_PATH}/packages"
 : "${CREW_CACHE_DIR:=$CREW_PREFIX/tmp/packages}"
 # For container usage, where we want to specify i686 arch
 # on a x86_64 host by setting ARCH=i686.
-: "${ARCH:=$(uname -m)}"
+: "${ARCH:=$(/usr/bin/uname -m)}"
 # For container usage, when we are emulating armv7l via linux32
-# uname -m reports armv8l.
+# /usr/bin/uname -m reports armv8l.
 ARCH="${ARCH/armv8l/armv7l}"
 
 # BOOTSTRAP_PACKAGES cannot depend on crew_profile_base for their core operations (completion scripts are fine)
@@ -239,7 +239,7 @@ function extract_install () {
         echo "Zstd is broken or nonfunctional, and some packages can not be extracted properly."
         exit 1
       fi
-    ;;
+    ;;$
     *.tpxz)
       if "${CREW_PREFIX}"/bin/pixz -h &> /dev/null; then
         tar -I "${CREW_PREFIX}"/bin/pixz -xpf ../"${2}"
@@ -305,7 +305,11 @@ curl -L --progress-bar https://github.com/"${OWNER}"/"${REPO}"/tarball/"${BRANCH
 export LD_LIBRARY_PATH="${CREW_PREFIX}/lib${LIB_SUFFIX}"
 
 echo_info "Fixing crew alias..."
-alias crew='/usr/local/bin/ruby /mnt/stateful_partition/murkmod/chromebrew/lib/crew/bin/crew'
+
+echo 'export CREW_PREFIX=/mnt/stateful_partition/murkmod/chromebrew' >> ~/.bashrc
+echo 'export PATH="/mnt/stateful_partition/murkmod/chromebrew/bin:/mnt/stateful_partition/murkmod/chromebrew/sbin:\$PATH"' >> ~/.bashrc
+echo 'export LD_LIBRARY_PATH=/mnt/stateful_partition/murkmod/chromebrew/lib' >> ~/.bashrc
+source ~/.bashrc
 
 # Since we just downloaded the package repo, just update package
 # compatibility information.

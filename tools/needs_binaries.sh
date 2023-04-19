@@ -4,7 +4,7 @@ if [ ! -d ../packages ]; then
   exit 1
 fi
 cd ../packages
-arch=$(uname -m)
+arch=$(/usr/bin/uname -m)
 exclusions='android_studio.rb antlr4.rb asciidoctor.rb asciinema.rb atom.rb autosetup.rb balena_etcher.rb blender.rb brave.rb broadway.rb cabal.rb checkinstall.rb'
 exclusions+=' chrome.rb clear_cache.rb codium.rb composer.rb cowsay.rb cpu_x.rb crew_profile.rb cros_resize.rb dart.rb depot_tools.rb docx2txt.rb dr.rb elixir.rb'
 exclusions+=' far.rb fd.rb firefox.rb flutter.rb fortune.rb fortunes.rb fpc.rb freebasic.rb freecad.rb freedos.rb gcc_tools.rb gcloud.rb ghc.rb gittools.rb gradle.rb'

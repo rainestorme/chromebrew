@@ -155,7 +155,7 @@ class Sommelier < Package
             check_linux_version() {
                 maj_ver=$1
                 min_ver=$2
-                version_good=$(uname -r | awk 'BEGIN{ FS="."};
+                version_good=$(/usr/bin/uname -r | awk 'BEGIN{ FS="."};
                 { if ($1 < '"${maj_ver}"') { print "N"; }
                   else if ($1 == '"${maj_ver}"') {
                       if ($2 < '"${min_ver}"') { print "N"; }
@@ -168,7 +168,7 @@ class Sommelier < Package
                     return 1
                 fi
             }
-            case "$(uname -m)" in
+            case "$(/usr/bin/uname -m)" in
             x86_64)
               if ! check_linux_version 4 16; then
               :

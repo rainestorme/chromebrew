@@ -3,7 +3,7 @@
 CREW_VERSION = '1.32.3'
 
 # kernel architecture
-KERN_ARCH = `uname -m`.chomp
+KERN_ARCH = `/usr/bin/uname -m`.chomp
 
 # read and parse processor infomation from /proc/cpuinfo
 CPUINFO = File.read('/proc/cpuinfo') \
@@ -75,7 +75,7 @@ if CREW_IN_CONTAINER && ENV['CREW_KERNEL_VERSION'].to_s.empty?
     CREW_KERNEL_VERSION = '4.14'
   end
 else
-  CREW_KERNEL_VERSION = ENV.fetch('CREW_KERNEL_VERSION', `uname -r`.rpartition('.')[0])
+  CREW_KERNEL_VERSION = ENV.fetch('CREW_KERNEL_VERSION', `/usr/bin/uname -r`.rpartition('.')[0])
 end
 
 CREW_LIB_PREFIX = "#{CREW_PREFIX}/#{ARCH_LIB}"
