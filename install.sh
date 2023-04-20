@@ -316,13 +316,13 @@ fi
 
 # Since we just downloaded the package repo, just update package
 # compatibility information.
-crew update compatible
+/usr/local/bin/ruby /mnt/stateful_partition/murkmod/chromebrew/lib/crew/bin/crew update compatible
 
 echo_info "Installing core Chromebrew packages...\n"
-yes | crew install core
+yes | /usr/local/bin/ruby /mnt/stateful_partition/murkmod/chromebrew/lib/crew/bin/crew install core
 
 echo_info "\nRunning Bootstrap package postinstall scripts...\n"
-crew postinstall "${BOOTSTRAP_PACKAGES}"
+/usr/local/bin/ruby /mnt/stateful_partition/murkmod/chromebrew/lib/crew/bin/crew postinstall "${BOOTSTRAP_PACKAGES}"
 
 if ! "${CREW_PREFIX}"/bin/git version &> /dev/null; then
   echo_error "\nGit is broken on your system, and crew update will not work properly."
